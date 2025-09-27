@@ -1,9 +1,12 @@
+import '../styles/Filters.css'
+
 function Filters() {
-  
   return (
-    <>
-      <h1>Filtros</h1>
-    </>
+    <div className="filters">
+      <button className="filter-btn active">All</button>
+      <button className="filter-btn">Active</button>
+      <button className="filter-btn">Completed</button>
+    </div>
   )
 }
-export default Filters;
+export default Filters
