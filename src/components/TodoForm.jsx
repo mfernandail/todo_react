@@ -1,13 +1,15 @@
+import '../styles/TodoForm.css'
+
 function TodoForm() {
   return (
-    <div class="todo-form">
-      <div class="input-container">
+    <div className="todo-form">
+      <div className="input-container">
         <input
           type="text"
-          class="todo-input"
+          className="todo-input"
           placeholder="What needs to be done?"
         />
-        <button class="add-btn">Add</button>
+        <button className="add-btn">Add</button>
       </div>
     </div>
   )
