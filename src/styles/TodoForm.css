@@ -1,8 +1,4 @@
 .todo-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #eee;
   margin-bottom: 30px;
 }
 
@@ -41,4 +37,15 @@
 .add-btn:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+.error {
+  display: block;
+  color: #6d0101;
+  font-size: 14px;
+  text-align: center;
+  background-color: #ff00005a;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-top: 10px;
 }
