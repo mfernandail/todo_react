@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../styles/TodoForm.css'
 
-function TodoForm() {
+function TodoForm({ addTodo }) {
   const [task, setTask] = useState('')
   const [error, setError] = useState('')
 
@@ -10,21 +10,24 @@ function TodoForm() {
 
     setTask(inputTask)
 
-    if (inputTask.trim() === '') {
-      setError('Please enter a task')
-    } else {
-      setError('')
-    }
+    if (error) setError('')
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (task.trim() === '') {
       setError('Please enter a task')
+
+      setTimeout(() => {
+        setError('')
+      }, 3000)
       return
     }
 
-    console.log(task)
+    addTodo(task)
+
+    setError('')
+    setTask('')
   }
 
   return (
