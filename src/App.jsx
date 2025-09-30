@@ -7,8 +7,6 @@ import './styles/App.css'
 function App() {
   const [todos, setTodos] = useState([])
 
-  console.log(todos)
-
   const addTodo = (todo) => {
     const newTodo = {
       id: Date.now(),
@@ -20,10 +18,14 @@ function App() {
     setTodos((todos) => [...todos, newTodo])
   }
 
+  const deleteTask = (id) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== id))
+  }
+
   return (
     <div className="container">
       <Header />
-      <TodoContainer addTodo={addTodo} todos={todos} />
+      <TodoContainer addTodo={addTodo} todos={todos} deleteTask={deleteTask} />
       <Footer />
     </div>
   )
