@@ -1,11 +1,20 @@
 import '../styles/Filters.css'
 
-function Filters() {
+function Filters({ filtersTasks }) {
+  const stateTask = (stateTask) => {
+    filtersTasks(stateTask)
+  }
   return (
     <div className="filters">
-      <button className="filter-btn active">All</button>
-      <button className="filter-btn">Active</button>
-      <button className="filter-btn">Completed</button>
+      <button onClick={() => stateTask(null)} className="filter-btn active">
+        All
+      </button>
+      <button onClick={() => stateTask(true)} className="filter-btn">
+        Active
+      </button>
+      <button onClick={() => stateTask(false)} className="filter-btn">
+        Completed
+      </button>
     </div>
   )
 }

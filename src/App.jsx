@@ -22,10 +22,22 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo.id !== id))
   }
 
+  const filtersTasks = (stateTask) => {
+    console.log(stateTask)
+    if (filtersTasks !== null) {
+      setTodos((todos) => todos.filter((todo) => todo.complete === stateTask))
+    }
+  }
+
   return (
     <div className="container">
       <Header />
-      <TodoContainer addTodo={addTodo} todos={todos} deleteTask={deleteTask} />
+      <TodoContainer
+        addTodo={addTodo}
+        todos={todos}
+        deleteTask={deleteTask}
+        filtersTasks={filtersTasks}
+      />
       <Footer />
     </div>
   )
