@@ -2,12 +2,18 @@ import Filters from './Filters'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-function TodoContainer({ addTodo, todos, deleteTask, filtersTasks }) {
+function TodoContainer({
+  addTodo,
+  todos,
+  deleteTask,
+  onFilterChange,
+  toggleTodo,
+}) {
   return (
     <div className="todo-container">
       <TodoForm addTodo={addTodo} />
-      <Filters filtersTasks={filtersTasks} />
-      <TodoList todos={todos} deleteTask={deleteTask} />
+      <Filters onFilterChange={onFilterChange} />
+      <TodoList todos={todos} deleteTask={deleteTask} toggleTodo={toggleTodo} />
     </div>
   )
 }

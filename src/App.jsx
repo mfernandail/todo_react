@@ -22,11 +22,22 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo.id !== id))
   }
 
-  const filtersTasks = (stateTask) => {
-    console.log(stateTask)
-    if (filtersTasks !== null) {
-      setTodos((todos) => todos.filter((todo) => todo.complete === stateTask))
+  const onFilterChange = (stateTask) => {
+    let currentFilter
+
+    if (stateTask === null) {
+      currentFilter = todos
+    } else {
+      currentFilter = todos.filter((todo) => todo.complete === stateTask)
     }
+  }
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, complete: !todo.complete } : todo
+      )
+    )
   }
 
   return (
@@ -36,7 +47,8 @@ function App() {
         addTodo={addTodo}
         todos={todos}
         deleteTask={deleteTask}
-        filtersTasks={filtersTasks}
+        onFilterChange={onFilterChange}
+        toggleTodo={toggleTodo}
       />
       <Footer />
     </div>
