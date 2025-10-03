@@ -5,7 +5,10 @@ import TodoContainer from './components/TodoContainer'
 import './styles/App.css'
 
 function App() {
+  const todoLS = JSON.parse(localStorage.getItem('todos')) || []
   const [todos, setTodos] = useState([])
+
+  console.log(todoLS)
 
   const addTodo = (todo) => {
     const newTodo = {
@@ -16,6 +19,8 @@ function App() {
     }
 
     setTodos((todos) => [...todos, newTodo])
+    localStorage.setItem('todos', JSON.stringify(todos))
+    console.log(todos)
   }
 
   const deleteTask = (id) => {
