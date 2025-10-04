@@ -3,12 +3,19 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import TodoContainer from './components/TodoContainer'
 import './styles/App.css'
+import { useEffect } from 'react'
 
 function App() {
-  const todoLS = JSON.parse(localStorage.getItem('todos')) || []
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('todos')
+    return saved ? JSON.parse(saved) : []
+  })
 
-  console.log(todoLS)
+  const [filter, setFilter] = useState([])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = (todo) => {
     const newTodo = {
@@ -19,8 +26,6 @@ function App() {
     }
 
     setTodos((todos) => [...todos, newTodo])
-    localStorage.setItem('todos', JSON.stringify(todos))
-    console.log(todos)
   }
 
   const deleteTask = (id) => {
@@ -28,13 +33,13 @@ function App() {
   }
 
   const onFilterChange = (stateTask) => {
-    let currentFilter
-
+    console.log(stateTask)
     if (stateTask === null) {
-      currentFilter = todos
+      setFilter()
     } else {
-      currentFilter = todos.filter((todo) => todo.complete === stateTask)
+      setFilter(todos.filter((todo) => todo.complete === stateTask))
     }
+    console.log(filter)
   }
 
   const toggleTodo = (id) => {
