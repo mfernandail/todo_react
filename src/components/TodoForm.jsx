@@ -2,7 +2,7 @@ import { useState } from 'react'
 import '../styles/TodoForm.css'
 
 function TodoForm({ addTodo }) {
-  const [task, setTask] = useState('')
+  const [task, setTask] = useState('test')
   const [error, setError] = useState('')
 
   const handleChange = (e) => {
