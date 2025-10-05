@@ -8,11 +8,12 @@ function TodoContainer({
   deleteTask,
   onFilterChange,
   toggleTodo,
+  currentFilter,
 }) {
   return (
     <div className="todo-container">
       <TodoForm addTodo={addTodo} />
-      <Filters onFilterChange={onFilterChange} />
+      <Filters onFilterChange={onFilterChange} currentFilter={currentFilter} />
       <TodoList todos={todos} deleteTask={deleteTask} toggleTodo={toggleTodo} />
     </div>
   )
