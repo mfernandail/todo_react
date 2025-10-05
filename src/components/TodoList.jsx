@@ -1,6 +1,6 @@
 import '../styles/TodoList.css'
 
-function TodoList({ todos, deleteTask, toggleTodo }) {
+function TodoList({ todos, deleteTask, toggleTodo, clearComplete, allTodos }) {
   return (
     <>
       <div className="todo-list">
@@ -27,7 +27,7 @@ function TodoList({ todos, deleteTask, toggleTodo }) {
 
       <div className="stats">
         <div className="stat">
-          <span className="stat-number">{todos.length}</span> total
+          <span className="stat-number">{allTodos.length}</span> total
         </div>
         <div className="stat">
           <span className="stat-number">
@@ -41,7 +41,9 @@ function TodoList({ todos, deleteTask, toggleTodo }) {
           </span>{' '}
           completed
         </div>
-        <button className="clear-btn">Clear completed</button>
+        <button onClick={clearComplete} className="clear-btn">
+          Clear completed
+        </button>
       </div>
     </>
   )
