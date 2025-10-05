@@ -1,17 +1,18 @@
-import { useState } from 'react'
-import Footer from './components/Footer'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import TodoContainer from './components/TodoContainer'
+import Footer from './components/Footer'
+
 import './styles/App.css'
-import { useEffect } from 'react'
 
 function App() {
-  const [todos, setTodos] = useState(() => {
-    const saved = localStorage.getItem('todos')
-    return saved ? JSON.parse(saved) : []
-  })
+  function getInitialTodos() {
+    const todosSaved = localStorage.getItem('todos')
+    return todosSaved ? JSON.parse(todosSaved) : []
+  }
 
-  const [filter, setFilter] = useState([])
+  const [todos, setTodos] = useState(getInitialTodos)
+  const [currentFilter, setCurrentFilter] = useState('all')
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
@@ -32,14 +33,18 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo.id !== id))
   }
 
-  const onFilterChange = (stateTask) => {
-    console.log(stateTask)
-    if (stateTask === null) {
-      setFilter()
+  const getFilteredTodos = () => {
+    if (currentFilter === 'all') {
+      return todos
+    } else if (currentFilter === 'active') {
+      return todos.filter((todo) => todo.complete === false)
     } else {
-      setFilter(todos.filter((todo) => todo.complete === stateTask))
+      return todos.filter((todo) => todo.complete === true)
     }
-    console.log(filter)
+  }
+
+  const onFilterChange = (stateTask) => {
+    setCurrentFilter(stateTask)
   }
 
   const toggleTodo = (id) => {
@@ -50,15 +55,22 @@ function App() {
     )
   }
 
+  const clearComplete = () => {
+    setTodos(todos.filter((todo) => todo.complete !== true))
+  }
+
   return (
     <div className="container">
       <Header />
       <TodoContainer
         addTodo={addTodo}
-        todos={todos}
+        todos={getFilteredTodos()}
+        allTodos={todos}
         deleteTask={deleteTask}
         onFilterChange={onFilterChange}
         toggleTodo={toggleTodo}
+        currentFilter={currentFilter}
+        clearComplete={clearComplete}
       />
       <Footer />
     </div>
