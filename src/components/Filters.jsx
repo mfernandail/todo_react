@@ -1,18 +1,32 @@
 import '../styles/Filters.css'
 
-function Filters({ onFilterChange }) {
-  const stateTask = (stateTask) => {
-    onFilterChange(stateTask)
+function Filters({ onFilterChange, currentFilter }) {
+  const onChangeState = (e) => {
+    onFilterChange(e.target.id)
   }
   return (
     <div className="filters">
-      <button onClick={() => stateTask(null)} className="filter-btn active">
+      <button
+        id="all"
+        onClick={onChangeState}
+        className={`filter-btn ${currentFilter === 'all' ? 'active' : ''} `}
+      >
         All
       </button>
-      <button onClick={() => stateTask(false)} className="filter-btn">
+      <button
+        id="active"
+        onClick={onChangeState}
+        className={`filter-btn ${currentFilter === 'active' ? 'active' : ''} `}
+      >
         Active
       </button>
-      <button onClick={() => stateTask(true)} className="filter-btn">
+      <button
+        id="completed"
+        onClick={onChangeState}
+        className={`filter-btn ${
+          currentFilter === 'completed' ? 'active' : ''
+        } `}
+      >
         Completed
       </button>
     </div>
