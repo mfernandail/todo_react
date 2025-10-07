@@ -1,12 +1,19 @@
-# React + Vite
+# Week Nº 22
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Step by step, line by line — becoming a Full Stack Developer in one year.
 
-Currently, two official plugins are available:
+## TODO Application with React
+A fully functional task management application built with React, implementing CRUD operations, filtering capabilities, and persistent storage. This project marks the transition from vanilla JavaScript to React framework.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 📌 Features
+- Create, read, update, and delete tasks.
+- Mark tasks as completed or active with checkbox interaction.
+- Filter tasks by All, Active, or Completed states with visual feedback.
+- utomatic data persistence using localStorage with lazy initialization for optimal performance.
+- Dynamic counters showing total tasks, active tasks, and completed tasks.
+- Bulk delete all completed tasks with single action.
+- All form inputs managed by React state for predictable behavior.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🧠 Lessons Learned
+- Mastered useState hook for managing component state, understanding when to lift state up to parent components.
+- Applied side effects management for localStorage synchronization.
